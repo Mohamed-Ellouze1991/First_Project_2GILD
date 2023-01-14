@@ -1,0 +1,34 @@
+{
+    "members": [
+
+        {
+            "id": "569",
+            "cin": "36666",
+            "name": "med ellouze ",
+            "creatdate": "28/08/1991",
+            "cv": "lien1",
+            "type": "emp"
+
+        },
+        {
+            "id": "147896",
+            "cin": "73",
+            "name": "salma ",
+            "creatdate": "26/12/1994",
+            "cv": "lien",
+            "type": "element"
+
+
+        },
+        {
+            "id": "147896",
+            "cin": "78932",
+            "name": "mohamed",
+            "creatdate": "28/08/1991",
+            "cv": "le",
+            "type": "employe"
+
+
+        }
+    ]
+}
