@@ -18,6 +18,7 @@ export class MemberFormComponent implements OnInit {
   }
 CurrentItemId:any;
 form:any;
+itemMember:any;
 ngOnInit():void
 {
   //1.Récuperer route active
@@ -27,10 +28,12 @@ ngOnInit():void
  
   //3.si id n'a pas de valeur  
   //4.je suis dans create => appeler initForm
-  if (!!this.CurrentItemId) // si exixte et a une valeur (!!)
+  if (!!this.CurrentItemId) // si existe et a une valeur (!!)
   {
     //je suis dans edit
-    this.memberService.getMemberById(this.CurrentItemId).then((item1)=>{this.initform1(item1)});
+    this.memberService.getMemberById(this.CurrentItemId).then((item1)=>{
+      this.itemMember=item1;
+      this.initform1(item1)});
   }else 
   {
     //je suis dans create
@@ -52,16 +55,27 @@ initform():void
   });
 
 }
-
-onsub():void
+initform1(x : any):void
 {
-//Récuperation et affichage du formulaire dans la console 
-console.log( this.form.value);
-//Appeler la fonction du service saveMember(input:form.value)
-const ObjectToSubmit=this.form.value;
-this.memberService.saveMember(ObjectToSubmit).then(()=>{this.router.navigate(['/members'])}) //
+  this.form=new FormGroup({
+    cin:new FormControl(x.cin, Validators.required),
+    name:new FormControl(x.name, Validators.required),
+    cv:new FormControl(x.cv, Validators.required),
+    type:new FormControl(x.type, Validators.required)
+  });
+
 }
 
+onsub():void
+  {
+//Récuperation et affichage du formulaire dans la console 
+console.log( this.form.value);
+console.log( "recuoe",this.itemMember);
+//Appeler la fonction du service saveMember(input:form.value)
+const ObjectToSubmit={...this.itemMember,...this.form.value};
+console.log("rrrrrrrrrrrrrrrrrr");
+this.memberService.saveMember(ObjectToSubmit).then(()=>{this.router.navigate(['/members'])}) //
+  }
 
 
 

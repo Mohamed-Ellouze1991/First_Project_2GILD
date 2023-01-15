@@ -14,8 +14,18 @@ import { MemberService } from '../../services/member.service';
 export class MemberListComponent {
   constructor(private MS:MemberService){}
   datasource :member[]=this.MS.tab;
+  tab:member[]=GLOBAL._DB.members;
   
  
  displayedColumns: string[] = ['id', 'cin', 'name', 'creatdate','cv','type','action'];
 
+ Delete(id:string):void
+  {
+    console.log('Button was clicked');
+
+this.MS.deleteMemberById(id).then(()=>{this.datasource=this.MS.tab})
+//this.datasource=this.MS.tab;
+  }
+
 }
+
