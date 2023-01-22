@@ -39,4 +39,8 @@ export class MemberService {
     return new Promise(resolve => resolve())
 
   }
+  getAllMember():Promise<member[]>
+    {
+      return new Promise(resolve => resolve(this.tab))
+    }
 }
