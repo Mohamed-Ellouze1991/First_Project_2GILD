@@ -26,6 +26,10 @@ export class MemberListComponent {
 this.MS.deleteMemberById(id).then(()=>{this.datasource=this.MS.tab})
 //this.datasource=this.MS.tab;
   }
+  fetchDatasource():void
+    {
+      this.MS.getAllMember().then((newtab)=>{this.datasource= newtab})
+    }
 
 }
 
