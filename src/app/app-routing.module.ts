@@ -12,6 +12,11 @@ const routes: Routes = [
   component:MemberListComponent,
 },
 {
+  path:'',
+  pathMatch:'full',
+  redirectTo:'members'
+},
+{
   path:'Create',
   pathMatch:'full',
   component:MemberFormComponent,
@@ -20,9 +25,12 @@ const routes: Routes = [
   path:'members/:id/edit',
   pathMatch:'full',
   component:MemberFormComponent,
+},
+{
+  path:'**',
+  pathMatch:'full',
+  redirectTo:'members',
 }
-
-
 
 
 ];
